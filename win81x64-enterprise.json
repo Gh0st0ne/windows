@@ -146,10 +146,8 @@
         "script/vagrant.bat",
         "script/cmtool.bat",
         "script/vmtool.bat",
-        "script/clean.bat",
-        "script/ultradefrag.bat",
-        "script/uninstall-7zip.bat",
-        "script/sdelete.bat"
+        "script/chocolatey.bat",
+        "script/python.bat"
       ],
       "type": "windows-shell"
     }
