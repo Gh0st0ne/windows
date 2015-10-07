@@ -1,0 +1,224 @@
+{
+  "builders": [
+    {
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "floppy/eval-win81x64-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/powerconfig.bat",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/update.bat",
+        "floppy/disablewinupdate.bat",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd"
+      ],
+      "guest_os_type": "windows8-64",
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command`}}",
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "tools_upload_flavor": "windows",
+      "type": "vmware-iso",
+      "vm_name": "eval-win81x64-enterprise",
+      "vmx_data": {
+        "cpuid.coresPerSocket": "1",
+        "memsize": "1536",
+        "numvcpus": "1",
+        "scsi0.virtualDev": "lsisas1068"
+      }
+    },
+    {
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "floppy/eval-win81x64-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/powerconfig.bat",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/update.bat",
+        "floppy/disablewinupdate.bat",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd",
+        "floppy/oracle-cert.cer"
+      ],
+      "guest_os_type": "Windows8_64",
+      "hard_drive_interface": "sata",
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command`}}",
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1536"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/CMPXCHG16B",
+          "1"
+        ]
+      ],
+      "vm_name": "eval-win81x64-enterprise"
+    },
+    {
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "floppy/eval-win81x64-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/powerconfig.bat",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/update.bat",
+        "floppy/disablewinupdate.bat",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd"
+      ],
+      "guest_os_type": "win-8.1",
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "iso_url": "{{ user `iso_url` }}",
+      "parallels_tools_flavor": "win",
+      "prlctl": [
+        [
+          "set",
+          "{{.Name}}",
+          "--memsize",
+          "1536"
+        ],
+        [
+          "set",
+          "{{.Name}}",
+          "--cpus",
+          "1"
+        ]
+      ],
+      "shutdown_command": "{{ user `shutdown_command`}}",
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "type": "parallels-iso",
+      "vm_name": "eval-win81x64-enterprise"
+    },
+    {
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "floppy/IRMA/netkvm.*",
+        "floppy/eval-win81x64-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/powerconfig.bat",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/disablewinupdate.bat",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd"
+      ],
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command`}}",
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "type": "qemu",
+      "accelerator": "kvm",
+      "format": "qcow2",
+      "disk_interface": "ide",
+      "vm_name": "eval-win81x64-enterprise",
+      "qemuargs": [
+        ["-m", "1536M"],
+        ["-smp", "1"]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "compression_level": 1,
+      "keep_input_artifact": false,
+      "output": "box/{{.Provider}}/eval-win81x64-enterprise-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box",
+      "type": "vagrant",
+      "vagrantfile_template": "tpl/vagrantfile-eval-win81x64-enterprise.tpl"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "remote_path": "/tmp/script.ps1",
+      "execute_command": "{{.Vars}} powershell -NoProfile -ExecutionPolicy unrestricted -file C:/Windows/Temp/script.ps1",
+      "scripts": [
+        "script/irma/chocolatey.ps1",
+        "script/irma/install_requirements.ps1",
+        "script/irma/install.ps1"
+      ]
+    },
+    {
+      "environment_vars": [
+        "CM={{user `cm`}}",
+        "CM_VERSION={{user `cm_version`}}",
+        "UPDATE={{user `update`}}"
+      ],
+      "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
+      "remote_path": "/tmp/script.bat",
+      "scripts": [
+        "script/vagrant.bat",
+        "script/cmtool.bat",
+        "script/vmtool.bat",
+        "script/clean.bat",
+        "script/ultradefrag.bat",
+        "script/uninstall-7zip.bat",
+        "script/sdelete.bat",
+        "script/chocolatey.bat"
+      ],
+      "type": "shell"
+    },
+    {
+      "inline": [
+        "rm -f /tmp/script.bat"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "cm": "nocm",
+    "cm_version": "",
+    "disk_size": 40960,
+    "headless": false,
+    "iso_checksum": "ae59e04462e4dc74e971d6e98d0cc1f2f3d63f1d",
+    "iso_url": "http://download.microsoft.com/download/5/3/C/53C31ED0-886C-4F81-9A38-F58CE4CE71E8/9200.16384.WIN8_RTM.120725-1247_X64FRE_ENTERPRISE_EVAL_EN-US-HRM_CENA_X64FREE_EN-US_DV5.ISO",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c 'Packer Shutdown'",
+    "update": true,
+    "version": "0.1.0"
+  }
+}
